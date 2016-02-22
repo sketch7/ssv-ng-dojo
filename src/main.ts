@@ -1,5 +1,9 @@
-import {utils} from "ssv-core";
+import * as angular from "angular";
+import app from "./app/app.module";
 
-let name = utils.string.interpolate("name=:name", { name: "Chiko" });
-let mathResult = utils.math.add(1, 4);
-console.log(`[main] name=${name} ; mathResult=${mathResult}`);
+
+angular.element(document).ready(() => {
+	angular.bootstrap(document.documentElement, [app.name], {
+		strictDi: true
+	});
+});
