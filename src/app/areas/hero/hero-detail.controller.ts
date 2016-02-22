@@ -1,12 +1,13 @@
 import {ILog, ILoggerFactory} from "core/logger/logger";
-
+import consts from "app/app.const";
 import {Hero} from "./hero.model";
 import {HeroService} from "./hero.service";
 
-export class HeroController {
-	static id = "heroController";
+export class HeroDetailController {
+	static id = "heroDetailController";
 
-	model: Hero;
+	hero: Hero;
+	heroesState = consts.routeStates.heroes;
 
 	private _logger: ILog;
 
@@ -17,10 +18,10 @@ export class HeroController {
 		heroResolve: Hero
 	) {
 
-		this._logger = loggerFactory(HeroController.id);
+		this._logger = loggerFactory(HeroDetailController.id);
 		this._logger.debug("ctor");
 
-		this.model = heroResolve;
+		this.hero = heroResolve;
 	}
 
 }

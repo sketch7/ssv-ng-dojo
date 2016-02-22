@@ -1,7 +1,7 @@
 import {IPromise, IQService} from "angular";
 import {ILog, ILoggerFactory} from "core/logger/logger";
 import {Hero} from "./hero.model";
-import {heroes} from "./hero.mock-data";
+import {Heroes} from "./mock-heroes";
 import * as _ from "lodash";
 
 export class HeroService {
@@ -21,7 +21,7 @@ export class HeroService {
 
 
 	getAll(): IPromise<Hero[]> {
-		return this.$q.when(heroes);
+		return this.$q.when(Heroes);
 	}
 
 	getByKey(key: string): IPromise<Hero> {

@@ -1,12 +1,10 @@
 import {ILog, ILoggerFactory} from "core/logger/logger";
-import {Hero} from "../hero/hero";
+import consts from "app/app.const";
 
 export class HomeController {
 	static id = "homeController";
 
-	title = "Top Heroes";
-	heroes: Hero[];
-	language: string;
+	title = consts.name;
 
 	private _logger: ILog;
 
@@ -14,13 +12,10 @@ export class HomeController {
 	/*@ngInject*/
 	constructor(
 		// private translationService: ITranslationService,
-		private loggerFactory: ILoggerFactory,
-		private heroesResolve: Hero[]
+		private loggerFactory: ILoggerFactory
 	) {
 
 		this._logger = loggerFactory(HomeController.id);
-		this.heroes = heroesResolve;
 	}
-
 
 }

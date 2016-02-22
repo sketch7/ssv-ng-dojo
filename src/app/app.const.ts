@@ -24,7 +24,8 @@ export class AppConst {
 export class RouteStateConfig {
 	layout = "layout";
 
-	home = `home`;
+	error = "error";
+	home = `${this.layout}.home`;
 	heroes = `${this.layout}.heroes`;
 	hero = `${this.layout}.hero`;
 }

@@ -5,7 +5,7 @@ import consts from "./app.const";
 import {LayoutController} from "./areas/layout/layout.controller";
 import {HomeController} from "./areas/home/home.controller";
 import {ErrorController} from "./areas/error/error.controller";
-import {HeroController, heroResolver, heroesResolver} from "./areas/hero/hero";
+import {HeroDetailController, HeroListController, heroResolver, heroesResolver} from "./areas/hero/hero";
 
 export interface AppStateParams {
 	hero?: string;
@@ -19,7 +19,7 @@ export default function appRouteConfigFunc(
 	console.log("config routing..");
 	const defaultControllerAs = "vm";
 
-	$stateProvider.state("shell", {
+	$stateProvider.state(consts.routeStates.layout, {
 		url: "/",
 		abstract: true,
 		templateUrl: `${consts.basePath}/areas/layout/layout.html`,
@@ -27,7 +27,7 @@ export default function appRouteConfigFunc(
 		controllerAs: defaultControllerAs,
 	});
 
-	$stateProvider.state("shell.home", {
+	$stateProvider.state(consts.routeStates.home, {
 		url: "",
 		templateUrl: `${consts.basePath}/areas/home/home.html`,
 		controller: HomeController,
@@ -41,10 +41,20 @@ export default function appRouteConfigFunc(
 		}
 	});
 
-	$stateProvider.state("shell.hero", {
+	$stateProvider.state(consts.routeStates.heroes, {
+		url: "heroes",
+		templateUrl: `${consts.basePath}/areas/hero/hero-list.html`,
+		controller: HeroListController,
+		controllerAs: defaultControllerAs,
+		resolve: {
+			heroesResolve: heroesResolver
+		}
+	});
+
+	$stateProvider.state(consts.routeStates.hero, {
 		url: "hero/:hero",
-		templateUrl: `${consts.basePath}/areas/hero/hero.html`,
-		controller: HeroController,
+		templateUrl: `${consts.basePath}/areas/hero/hero-detail.html`,
+		controller: HeroDetailController,
 		controllerAs: defaultControllerAs,
 		resolve: {
 			heroResolve: heroResolver
@@ -65,7 +75,7 @@ export default function appRouteConfigFunc(
 	// 	controllerAs: defaultControllerAs
 	// });
 	// 
-	$stateProvider.state("error", {
+	$stateProvider.state(consts.routeStates.error, {
 		url: "/error",
 		templateUrl: `${consts.basePath}/areas/error/error.html`,
 		controller: ErrorController,
