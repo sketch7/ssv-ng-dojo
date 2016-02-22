@@ -8,20 +8,23 @@ import appConfigFunc from "./app.config";
 import {ILoggerFactory, LoggerService, loggerFactory} from "./core/logger/logger";
 //import {AppBootstrapper} from "./app.bootstrap";
 import {NotificationService} from "./modules/notification/notification";
+import {UserInfo} from "./modules/user/user";
+import {HeroService} from "./areas/hero/hero";
 
 let app = angular.module(consts.moduleName, [
 	"ngAnimate",
 	"ngCookies",
 	"ngTouch",
 	"ngSanitize",
-	"ui.router",
-	"ui.bootstrap"
+	"ui.router"
 ]);
 
 // app.service(AppBootstrapper.id, AppBootstrapper);
 app.service(LoggerService.id, LoggerService);
 app.factory("loggerFactory", loggerFactory);
 app.service(NotificationService.id, NotificationService);
+app.service(HeroService.id, HeroService);
+app.service(UserInfo.id, UserInfo);
 
 app.config(appConfigFunc);
 app.config(appRouteFunc);

@@ -2,7 +2,7 @@ export class AppConst {
 
 	moduleName = "app-heroes";
 	templateModuleName = "app.tmpls";
-	basePath = "/wwwroot/dist/app";
+	basePath = "/dist/app";
 
 	name = "Heroes";
 	version = "1.0.0-alpha";

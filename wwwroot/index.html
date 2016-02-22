@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Sketch7 Aurelia Dojo</title>
+	<title>Sketch7 Angular 1.x Dojo</title>
 	<base href="/">
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans|Montserrat:400,700" rel="stylesheet" type="text/css">
 	<link href="./jspm_packages/github/twbs/bootstrap@3.3.6/css/bootstrap.css" type="text/css" rel="stylesheet">
@@ -11,28 +11,12 @@
 </head>
 
 <body>
-
-	<h1>Aurelia Dojo</h1>
-	<p>See console window...</p>
-	<!--<app-dojo>
-		<div class="splash-overlay">
-			<div class="loader">
-				<div class="side"></div>
-				<div class="side"></div>
-				<div class="side"></div>
-				<div class="side"></div>
-				<div class="side"></div>
-				<div class="side"></div>
-				<div class="side"></div>
-				<div class="side"></div>
-			</div>
-		</div>
-	</app-dojo>-->
+	<div ui-view></div>
 
 	<script src="./jspm_packages/system.js"></script>
 	<script src="./system.config.js"></script>
 	<script>
-		System.import("main");
+		System.import("app-heroes");
 	</script>
 
 </body>

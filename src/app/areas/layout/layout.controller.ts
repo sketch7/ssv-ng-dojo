@@ -1,5 +1,6 @@
 import {ILog, ILoggerFactory} from "core/logger/logger";
 import {INotificationService} from "modules/notification/notification";
+import {IUserInfo} from "modules/user/user";
 import consts from "app/app.const";
 
 
@@ -18,15 +19,15 @@ export class LayoutController {
 		return consts.version;
 	}
 
-	// get user() {
-	// 	return this.userInfo.alias;
-	// }
+	get user() {
+		return this.userInfo.alias;
+	}
 
 	/*@ngInject*/
 	constructor(
 		private loggerFactory: ILoggerFactory,
-		private notificationService: INotificationService
-		// private userInfo: IUserInfo
+		private notificationService: INotificationService,
+		private userInfo: IUserInfo
 	) {
 
 		this._logger = loggerFactory(LayoutController.id);

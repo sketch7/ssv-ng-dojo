@@ -1,9 +1,15 @@
-import {IStateProvider} from "angular-ui-router";
+import {IStateProvider, IUrlRouterProvider} from "angular-ui-router";
 
 import consts from "./app.const";
 
 import {LayoutController} from "./areas/layout/layout.controller";
 import {HomeController} from "./areas/home/home.controller";
+import {ErrorController} from "./areas/error/error.controller";
+import {HeroController, heroResolver, heroesResolver} from "./areas/hero/hero";
+
+export interface AppStateParams {
+	hero?: string;
+}
 
 /*@ngInject*/
 export default function appRouteConfigFunc(
@@ -16,29 +22,34 @@ export default function appRouteConfigFunc(
 	$stateProvider.state("shell", {
 		url: "/",
 		abstract: true,
-		templateUrl: "areas/layout/layout.html",
-		controller: LayoutController.id,
+		templateUrl: `${consts.basePath}/areas/layout/layout.html`,
+		controller: LayoutController,
 		controllerAs: defaultControllerAs,
 	});
 
 	$stateProvider.state("shell.home", {
 		url: "",
-		templateUrl: "areas/home/home.html",
-		controller: HomeController.id,
+		templateUrl: `${consts.basePath}/areas/home/home.html`,
+		controller: HomeController,
 		controllerAs: defaultControllerAs,
-		//				resolve: {
-		//					fail: () => {
-		//						throw new Error("Fellaq!");
-		//					}
-		//				}
+		resolve: {
+			heroesResolve: heroesResolver
+			// 	fail: () => {
+			// //						throw new Error("Fellaq!");
+			// //					}
+			// }
+		}
 	});
-			
-	// $stateProvider.state("shell.hero", {
-	// 	url: "hero/:hero",
-	// 	templateUrl: "areas/hero/hero.html",
-	// 	controller: HeroController.id,
-	// 	controllerAs: defaultControllerAs
-	// });
+
+	$stateProvider.state("shell.hero", {
+		url: "hero/:hero",
+		templateUrl: `${consts.basePath}/areas/hero/hero.html`,
+		controller: HeroController,
+		controllerAs: defaultControllerAs,
+		resolve: {
+			heroResolve: heroResolver
+		}
+	});
 	// 
 	// $stateProvider.state("shell.basicform", {
 	// 	url: "basic-form",
@@ -54,12 +65,12 @@ export default function appRouteConfigFunc(
 	// 	controllerAs: defaultControllerAs
 	// });
 	// 
-	// $stateProvider.state("error", {
-	// 	url: "/error",
-	// 	templateUrl: "areas/error/error.html",
-	// 	controller: ErrorController.id,
-	// 	controllerAs: defaultControllerAs
-	// });
-			
+	$stateProvider.state("error", {
+		url: "/error",
+		templateUrl: `${consts.basePath}/areas/error/error.html`,
+		controller: ErrorController,
+		controllerAs: defaultControllerAs
+	});
+
 	$urlRouterProvider.otherwise("/");
 }

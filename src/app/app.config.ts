@@ -1,18 +1,27 @@
-import {ILogProvider, ILocationProvider} from "angular";
-import appConsts from "./app.const";
+import {ILogProvider, ILocationProvider, IHttpProvider, ICompileProvider} from "angular";
 
 /*@ngInject*/
 export default function appConfigFunc(
 	$logProvider: ILogProvider,
-	$locationProvider: ILocationProvider
+	$locationProvider: ILocationProvider,
+	$httpProvider: IHttpProvider,
+	$compileProvider: ICompileProvider
 ) {
-	// turn debugging off/on (no info or warn)
-	if ($logProvider.debugEnabled) {
-		$logProvider.debugEnabled(true);
+	configureForDebug(true);
+	configureHttp();
+
+	// remove the hash tag
+	$locationProvider.html5Mode({
+		enabled: true
+	});
+
+	function configureForDebug(isDebug: boolean) {
+		$compileProvider.debugInfoEnabled(isDebug);
+		$logProvider.debugEnabled(isDebug);
 	}
 
-	//		// remove the hash tag
-	//		$locationProvider.html5Mode({
-	//			enabled: true
-	//		});
+	function configureHttp() {
+		// http://blog.thoughtram.io/angularjs/2015/01/14/exploring-angular-1.3-speed-up-with-applyAsync.html
+		$httpProvider.useApplyAsync(true);
+	}
 }

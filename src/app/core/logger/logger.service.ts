@@ -1,6 +1,6 @@
 import {ILogService} from "angular";
 
-const enum LogType {
+export const enum LogType {
 	Debug,
 	Info,
 	Warning,
@@ -17,7 +17,7 @@ export interface ILog {
 
 export interface ILoggerService {
 
-	log(logType: LogType, message: string, data?: any);
+	log(logType: LogType, message: string, data?: any): void;
 
 }
 
@@ -29,7 +29,7 @@ export class LoggerService implements ILoggerService {
 
 	}
 
-	log(logType: LogType, message: string, data?: any) {
+	log(logType: LogType, message: string, data?: any): void {
 		switch (logType) {
 
 			case LogType.Debug:

@@ -5,6 +5,7 @@ var tsc = require("gulp-typescript");
 var sourcemaps = require("gulp-sourcemaps");
 var plumber = require("gulp-plumber");
 var sass = require("gulp-sass");
+var ngAnnotate = require("gulp-ng-annotate");
 
 var paths = require("../paths");
 
@@ -31,6 +32,7 @@ gulp.task("compile:ts", () => {
 		.pipe(tsc(tsProject));
 
 	return tsResult.js
+		.pipe(ngAnnotate())
 		.pipe(sourcemaps.write("."))
 		.pipe(gulp.dest(`${paths.output.dist}`))
 });
