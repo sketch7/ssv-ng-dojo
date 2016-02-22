@@ -10,6 +10,7 @@ import {ILoggerFactory, LoggerService, loggerFactory} from "./core/logger/logger
 import {NotificationService} from "./modules/notification/notification";
 import {UserInfo} from "./modules/user/user";
 import {HeroService} from "./areas/hero/hero";
+import {navComponent} from "./components/nav/nav";
 
 let app = angular.module(consts.moduleName, [
 	"ngAnimate",
@@ -25,6 +26,8 @@ app.factory("loggerFactory", loggerFactory);
 app.service(NotificationService.id, NotificationService);
 app.service(HeroService.id, HeroService);
 app.service(UserInfo.id, UserInfo);
+
+app.component("appNav", navComponent);
 
 app.config(appConfigFunc);
 app.config(appRouteFunc);

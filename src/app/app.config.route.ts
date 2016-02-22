@@ -17,7 +17,7 @@ export default function appRouteConfigFunc(
 	$urlRouterProvider: IUrlRouterProvider
 ) {
 	console.log("config routing..");
-	const defaultControllerAs = "vm";
+	const defaultControllerAs = consts.controllerAs;
 
 	$stateProvider.state(consts.routeStates.layout, {
 		url: "/",
@@ -33,7 +33,6 @@ export default function appRouteConfigFunc(
 		controller: HomeController,
 		controllerAs: defaultControllerAs,
 		resolve: {
-			heroesResolve: heroesResolver
 			// 	fail: () => {
 			// //						throw new Error("Fellaq!");
 			// //					}

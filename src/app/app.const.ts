@@ -3,6 +3,7 @@ export class AppConst {
 	moduleName = "app-heroes";
 	templateModuleName = "app.tmpls";
 	basePath = "/dist/app";
+	controllerAs = "vm";
 
 	name = "Heroes";
 	version = "1.0.0-alpha";
