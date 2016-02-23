@@ -8,10 +8,9 @@ export class HomeController {
 
 	private _logger: ILog;
 
-	//static $inject = ["translationService", "loggerFactory", "config"]; // manual way without using ngAnnotate
+	// static $inject = ["loggerFactory"]; // manual way without using ngAnnotate
 	/*@ngInject*/
 	constructor(
-		// private translationService: ITranslationService,
 		private loggerFactory: ILoggerFactory
 	) {
 

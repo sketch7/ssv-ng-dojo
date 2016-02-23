@@ -5,6 +5,7 @@ import consts from "./app.const";
 import {LayoutController} from "./areas/layout/layout.controller";
 import {HomeController} from "./areas/home/home.controller";
 import {ErrorController} from "./areas/error/error.controller";
+import {BasicFormController} from "./areas/basic-form/basic-form.controller";
 import {HeroDetailController, HeroListController, heroResolver, heroesResolver} from "./areas/hero/hero";
 
 export interface AppStateParams {
@@ -59,14 +60,14 @@ export default function appRouteConfigFunc(
 			heroResolve: heroResolver
 		}
 	});
-	// 
-	// $stateProvider.state("shell.basicform", {
-	// 	url: "basic-form",
-	// 	templateUrl: "areas/basic-form/basic-form.html",
-	// 	controller: BasicFormController.id,
-	// 	controllerAs: defaultControllerAs
-	// });
-	// 
+
+	$stateProvider.state(consts.routeStates.basicForm, {
+		url: "basic-form",
+		templateUrl: `${consts.basePath}/areas/basic-form/basic-form.html`,
+		controller: BasicFormController,
+		controllerAs: defaultControllerAs
+	});
+
 	// $stateProvider.state("shell.command-lab", {
 	// 	url: "command-lab",
 	// 	templateUrl: "areas/labs/command-lab.html",

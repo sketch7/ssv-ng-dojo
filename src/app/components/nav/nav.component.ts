@@ -28,7 +28,7 @@ export class NavController {
 		state: consts.routeStates.heroes
 	}, {
 			title: "Basic form",
-			state: "#"
+			state: consts.routeStates.basicForm
 		}, {
 			title: "Command lab",
 			state: "#"
