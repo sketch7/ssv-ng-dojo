@@ -1,7 +1,7 @@
 export class AppConst {
 
 	moduleName = "app-heroes";
-	templateModuleName = "app.tmpls";
+	templateModuleName = "app-heroes.tmpls";
 	basePath = "/dist/app";
 	controllerAs = "vm";
 
