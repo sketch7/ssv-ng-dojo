@@ -17,11 +17,10 @@ export default function appRouteConfigFunc(
 	$stateProvider: IStateProvider,
 	$urlRouterProvider: IUrlRouterProvider
 ) {
-	console.log("config routing..");
 	const defaultControllerAs = consts.controllerAs;
 
 	$stateProvider.state(consts.routeStates.layout, {
-		url: "/",
+		url: "",
 		abstract: true,
 		templateUrl: `${consts.basePath}/areas/layout/layout.html`,
 		controller: LayoutController,
@@ -29,7 +28,7 @@ export default function appRouteConfigFunc(
 	});
 
 	$stateProvider.state(consts.routeStates.home, {
-		url: "",
+		url: "/",
 		templateUrl: `${consts.basePath}/areas/home/home.html`,
 		controller: HomeController,
 		controllerAs: defaultControllerAs,
@@ -42,7 +41,7 @@ export default function appRouteConfigFunc(
 	});
 
 	$stateProvider.state(consts.routeStates.heroes, {
-		url: "heroes",
+		url: "/heroes",
 		templateUrl: `${consts.basePath}/areas/hero/hero-list.html`,
 		controller: HeroListController,
 		controllerAs: defaultControllerAs,
@@ -52,7 +51,7 @@ export default function appRouteConfigFunc(
 	});
 
 	$stateProvider.state(consts.routeStates.hero, {
-		url: "hero/:hero",
+		url: "/heroes/:hero",
 		templateUrl: `${consts.basePath}/areas/hero/hero-detail.html`,
 		controller: HeroDetailController,
 		controllerAs: defaultControllerAs,
@@ -62,7 +61,7 @@ export default function appRouteConfigFunc(
 	});
 
 	$stateProvider.state(consts.routeStates.basicForm, {
-		url: "basic-form",
+		url: "/basic-form",
 		templateUrl: `${consts.basePath}/areas/basic-form/basic-form.html`,
 		controller: BasicFormController,
 		controllerAs: defaultControllerAs

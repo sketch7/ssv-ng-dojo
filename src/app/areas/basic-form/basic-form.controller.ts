@@ -17,7 +17,7 @@ export class BasicFormController {
 	) {
 
 		this._logger = loggerFactory(BasicFormController.id);
-		this._logger.info("$onInit", "", { alias: this.alias });
+		this._logger.info("ctor", "", { alias: this.alias });
 		this.alias = userInfo.alias;
 	}
 
