@@ -47,7 +47,9 @@ function getTscProject() {
 // sass
 gulp.task("compile:sass", () => {
 	return gulp.src(paths.src.sass)
-		.pipe(sass().on("error", sass.logError))
+		.pipe(sass({
+			includePaths: paths.sass.includePaths
+		}).on("error", sass.logError))
 		.pipe(gulp.dest(`${paths.output.dist}/assets`))
 });
 
